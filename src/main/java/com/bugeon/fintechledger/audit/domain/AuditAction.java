@@ -1,0 +1,19 @@
+package com.bugeon.fintechledger.audit.domain;
+
+public enum AuditAction {
+    SIGNUP,
+    LOGIN,
+    LOGIN_FAILED,
+    LOGOUT,
+    TOKEN_REFRESH,
+    ACCOUNT_CREATED,
+    DEPOSIT,
+    WITHDRAWAL,
+    WITHDRAWAL_FAILED,
+    TRANSFER_INITIATED,
+    TRANSFER_COMPLETED,
+    TRANSFER_FAILED,
+    RECONCILIATION_DISCREPANCY,
+    DEPOSIT_FAILED,
+    IDEMPOTENT_REQUEST
+}

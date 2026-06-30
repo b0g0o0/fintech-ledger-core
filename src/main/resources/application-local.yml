@@ -1,0 +1,39 @@
+# ── Local development profile ─────────────────────────────────────────────────
+# Start infra: docker compose up postgres redis
+# Run app via IDE or: ./gradlew bootRun --args='--spring.profiles.active=local'
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fintech_ledger
+    username: fintech
+    password: changeme_local
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: changeme_local
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+
+jwt:
+  secret: local_dev_secret_do_not_use_in_production_must_be_at_least_256_bits_long_aaaa
+  access-expiry-ms: 3600000     # 1 h — relaxed for dev
+  refresh-expiry-ms: 604800000  # 7 days
+
+logging:
+  level:
+    root: INFO
+    com.bugeon.fintechledger: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+springdoc:
+  swagger-ui:
+    enabled: true   # always visible in local
